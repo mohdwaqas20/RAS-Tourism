@@ -45,7 +45,7 @@ export default function About() {
             <div style={{ borderRadius: 'var(--radius-lg)', overflow: 'hidden', aspectRatio: '4/3', position: 'relative' }}>
               {/* Video fills the card — clean, no overlays */}
               <video
-                src="/about.MP4"
+                src="./about.MP4"
                 autoPlay
                 muted
                 loop

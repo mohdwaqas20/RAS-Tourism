@@ -9,7 +9,7 @@ export default function Footer() {
         {/* Brand */}
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-            <img src="/logo.JPG" alt="RAS Tourism" style={{ height: 48, width: 48, objectFit: 'contain', borderRadius: 8 }} />
+            <img src="./logo.JPG" alt="RAS Tourism" style={{ height: 48, width: 48, objectFit: 'contain', borderRadius: 8 }} />
             <div>
               <div style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '1.2rem', fontWeight: 900, color: '#fff', letterSpacing: 2 }}>RAS</div>
               <div style={{ fontSize: '0.55rem', color: 'var(--gold)', letterSpacing: 3, fontWeight: 600 }}>— TOURISM —</div>

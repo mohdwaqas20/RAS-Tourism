@@ -31,7 +31,7 @@ export default function Navbar() {
         <div style={{ maxWidth: 1280, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 76 }}>
           {/* Logo */}
           <a href="#hero" onClick={(e) => { e.preventDefault(); handleNav('#hero') }} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <img src="/logo.JPG" alt="RAS Tourism Logo" style={{ height: 52, width: 52, objectFit: 'contain', borderRadius: 8 }} />
+            <img src="./logo.JPG" alt="RAS Tourism Logo" style={{ height: 52, width: 52, objectFit: 'contain', borderRadius: 8 }} />
             <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
               <span style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 900, fontSize: '1.35rem', color: scrolled ? 'var(--blue-dark)' : '#fff', letterSpacing: 2 }}>RAS</span>
               <span style={{ fontSize: '0.6rem', color: 'var(--gold)', letterSpacing: 3, fontWeight: 600, textTransform: 'uppercase' }}>— Tourism —</span>
