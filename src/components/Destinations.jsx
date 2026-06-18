@@ -46,7 +46,7 @@ const destinations = [
     region: 'Hidden Gem of UAE',
     tag: null,
     desc: 'Tranquil lagoons, mangroves and authentic Emirati heritage.',
-    image: './Destination_5.jpeg',
+    image: './Destination_5.jpg',
   },
   {
     id: 'europe',
@@ -55,7 +55,7 @@ const destinations = [
     tag: 'Schengen Visa',
     tagColor: '#3B82F6',
     desc: 'Iconic capitals, alpine scenery and centuries of history await.',
-    image: 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=600&q=80',
+    image: './Destination_6.jpg',
   },
 ]
 
