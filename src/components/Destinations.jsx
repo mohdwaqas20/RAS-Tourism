@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaWhatsapp, FaArrowRight, FaStarOfLife, FaAngleRight } from 'react-icons/fa6'
 import { brand } from '../../siteData'
@@ -12,7 +13,7 @@ const destinations = [
     tag: 'Most Popular',
     tagColor: 'var(--gold)',
     desc: 'Iconic skylines, desert safaris, luxury malls and world-class hospitality.',
-    image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80',
+    image: './Destination_1.jpg',
     span: true,
   },
   {
@@ -21,7 +22,7 @@ const destinations = [
     region: 'UAE Capital',
     tag: null,
     desc: 'Grand Mosque, cultural districts, and serene Corniche by the sea.',
-    image: 'https://images.unsplash.com/photo-1603190287605-e6ade32fa852?w=600&q=80',
+    image: './Destination_2.jpg',
   },
   {
     id: 'sharjah',
@@ -29,7 +30,23 @@ const destinations = [
     region: 'Cultural Capital',
     tag: null,
     desc: 'Museums, heritage areas and the cultural heart of the UAE.',
-    image: 'https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?w=600&q=80',
+    image: './Destination_3.jpg',
+  },
+  {
+    id: 'rak',
+    name: 'Ras Al Khaimah',
+    region: 'Adventure Capital',
+    tag: null,
+    desc: 'Jagged mountains, pristine beaches and thrilling outdoor adventures.',
+    image: './Destination_4.jpg',
+  },
+  {
+    id: 'uaq',
+    name: 'Umm Al Quwain',
+    region: 'Hidden Gem of UAE',
+    tag: null,
+    desc: 'Tranquil lagoons, mangroves and authentic Emirati heritage.',
+    image: './Destination_5.jpeg',
   },
   {
     id: 'europe',
@@ -43,17 +60,25 @@ const destinations = [
 ]
 
 function DestCard({ dest, index }) {
+  const [hovered, setHovered] = useState(false)
+
   return (
     <motion.div
       variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
       transition={{ duration: 0.5, delay: (index % 4) * 0.08 }}
       className={`dest-card ${dest.span ? 'dest-span' : ''}`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       style={{
         borderRadius: 20,
         overflow: 'hidden',
         position: 'relative',
         cursor: 'pointer',
         gridRow: dest.span ? 'span 2' : undefined,
+        transform: hovered ? 'scale(1.03)' : 'scale(1)',
+        transition: 'transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.45s ease',
+        boxShadow: hovered ? '0 28px 70px rgba(0,20,60,0.42)' : '0 4px 20px rgba(0,20,60,0.12)',
+        zIndex: hovered ? 2 : 1,
       }}
     >
       {/* Photo */}
@@ -61,14 +86,30 @@ function DestCard({ dest, index }) {
         src={dest.image}
         alt={dest.name}
         loading="lazy"
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease' }}
-        className="dest-img"
+        style={{
+          position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover',
+          transition: 'transform 0.6s ease, filter 0.5s ease',
+          transform: hovered ? 'scale(1.08)' : 'scale(1)',
+          filter: hovered ? 'brightness(1) saturate(1.1)' : 'brightness(0.72) saturate(0.85)',
+        }}
       />
-      {/* gradient overlay */}
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,12,40,0.92) 0%, rgba(0,12,40,0.35) 55%, transparent 100%)' }} />
+
+      {/* gradient overlay — lightens on hover */}
+      <div style={{
+        position: 'absolute', inset: 0,
+        background: hovered
+          ? 'linear-gradient(to top, rgba(0,12,40,0.88) 0%, rgba(0,12,40,0.18) 50%, transparent 100%)'
+          : 'linear-gradient(to top, rgba(0,12,40,0.95) 0%, rgba(0,12,40,0.55) 55%, rgba(0,12,40,0.2) 100%)',
+        transition: 'background 0.5s ease',
+      }} />
 
       {/* content */}
-      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: dest.span ? '28px 24px' : '20px 18px' }}>
+      <div style={{
+        position: 'absolute', bottom: 0, left: 0, right: 0,
+        padding: dest.span ? '28px 24px' : '20px 18px',
+        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+        transition: 'transform 0.4s ease',
+      }}>
         <div style={{ fontFamily: "'Montserrat', sans-serif", fontSize: dest.span ? '1.4rem' : '1rem', fontWeight: 800, color: '#fff', lineHeight: 1.2 }}>{dest.name}</div>
         <div style={{ fontSize: '0.72rem', color: 'rgba(255,210,120,0.9)', fontWeight: 600, marginTop: 3, letterSpacing: 0.4 }}>{dest.region}</div>
         {dest.span && (
@@ -85,6 +126,8 @@ function DestCard({ dest, index }) {
 }
 
 export default function Destinations() {
+  const [moreHovered, setMoreHovered] = useState(false)
+
   return (
     <section id="destinations" style={{ background: 'var(--bg)', padding: '100px 5%' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto' }}>
@@ -111,13 +154,20 @@ export default function Destinations() {
           <motion.div
             variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.35 }}
+            onMouseEnter={() => setMoreHovered(true)}
+            onMouseLeave={() => setMoreHovered(false)}
             style={{
               borderRadius: 20,
               background: 'linear-gradient(145deg, #001233 0%, #001F4E 45%, #003D85 100%)',
               padding: '32px 26px',
               display: 'flex', flexDirection: 'column',
               position: 'relative', overflow: 'hidden',
-              border: '1.5px solid rgba(216,178,106,0.2)',
+              border: moreHovered ? '1.5px solid rgba(216,178,106,0.5)' : '1.5px solid rgba(216,178,106,0.2)',
+              transform: moreHovered ? 'scale(1.03)' : 'scale(1)',
+              transition: 'transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.45s ease, border 0.3s ease',
+              boxShadow: moreHovered ? '0 28px 70px rgba(0,20,60,0.42)' : '0 4px 20px rgba(0,20,60,0.12)',
+              zIndex: moreHovered ? 2 : 1,
+              cursor: 'pointer',
             }}
           >
             {/* decorative rings */}
@@ -136,7 +186,7 @@ export default function Destinations() {
               <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, marginBottom: 18 }}>
                 We craft journeys to dozens of destinations worldwide — from Southeast Asia to the Americas.
               </p>
-              {['Turkey & Georgia', 'Maldives & Sri Lanka', 'Thailand & Bali', 'USA & Canada'].map((item, k) => (
+              {['Oman', 'Qatar', 'Azerbaijan', 'To Know More Contact Us ->'].map((item, k) => (
                 <div key={k} style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 9 }}>
                   <FaAngleRight style={{ color: 'var(--gold)', fontSize: '0.7rem', flexShrink: 0 }} />
                   <span style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.72)', fontWeight: 500 }}>{item}</span>
@@ -166,8 +216,6 @@ export default function Destinations() {
       <style>{`
         .dest-card { aspect-ratio: 3/4; }
         .dest-span { aspect-ratio: auto !important; }
-        .dest-card:hover .dest-img { transform: scale(1.07); }
-        .dest-card:hover { box-shadow: 0 24px 60px rgba(0,20,60,0.35) !important; }
 
         @media (max-width: 1100px) {
           .dest-grid { grid-template-columns: repeat(3, 1fr) !important; }

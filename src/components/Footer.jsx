@@ -84,7 +84,7 @@ export default function Footer() {
       <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.08)', margin: '0 5%' }} />
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '24px 5%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }} className="footer-bottom">
         <p style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.45)' }}>© {year} <span style={{ color: 'var(--gold)' }}>RAS Tourism</span>. All rights reserved.</p>
-        <p style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.45)' }}>Crafted with <span style={{ color: 'var(--gold)' }}>✦</span> in Sharjah, UAE</p>
+        <p style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.45)' }}>License No. <span style={{ color: 'var(--gold)' }}>941218</span> - Sharjah, UAE</p>
       </div>
 
       <style>{`

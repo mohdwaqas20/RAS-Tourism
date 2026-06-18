@@ -13,6 +13,11 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [menuOpen])
+
   const handleNav = (href) => {
     setMenuOpen(false)
     document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
@@ -67,24 +72,63 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            style={{ position: 'fixed', inset: 0, background: 'rgba(0,47,115,0.97)', zIndex: 999, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '2rem', backdropFilter: 'blur(12px)' }}>
-            <button onClick={() => setMenuOpen(false)} style={{ position: 'absolute', top: 24, right: 24, background: 'none', border: 'none', cursor: 'pointer', color: '#fff' }}>
-              <FaTimes size={28} />
+            style={{
+              position: 'fixed', inset: 0,
+              background: 'rgba(0,47,115,0.97)',
+              zIndex: 1100,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              backdropFilter: 'blur(12px)',
+              overflowY: 'auto',
+              paddingTop: 80,
+              paddingBottom: 40,
+            }}>
+
+            {/* Close Button — fixed inside overlay, above everything */}
+            <button
+              onClick={() => setMenuOpen(false)}
+              style={{
+                position: 'fixed',
+                top: 20,
+                right: 20,
+                zIndex: 1200,
+                background: 'rgba(255,255,255,0.15)',
+                border: '2px solid rgba(255,255,255,0.5)',
+                borderRadius: '50%',
+                width: 44,
+                height: 44,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                color: '#fff',
+                lineHeight: 1,
+              }}
+              aria-label="Close menu"
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="2" y1="2" x2="18" y2="18" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
+                <line x1="18" y1="2" x2="2" y2="18" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
+              </svg>
             </button>
-            {mobileNavLinks.map((link, i) => (
-              <motion.a key={link.label} href={link.href}
-                initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.06 }}
-                onClick={(e) => { e.preventDefault(); handleNav(link.href) }}
-                style={{ fontSize: '1.4rem', color: '#fff', fontWeight: 600, letterSpacing: 1 }}
-                onMouseEnter={e => e.target.style.color = 'var(--gold)'}
-                onMouseLeave={e => e.target.style.color = '#fff'}
-              >{link.label}</motion.a>
-            ))}
-            <motion.a href={`https://wa.me/${brand.whatsappNumber}`} target="_blank" rel="noopener"
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
-              style={{ display: 'flex', alignItems: 'center', gap: 10, background: '#25D366', color: '#fff', padding: '12px 28px', borderRadius: 50, fontWeight: 700, marginTop: 8 }}>
-              <FaWhatsapp /> WhatsApp Us
-            </motion.a>
+
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem', width: '100%' }}>
+              {mobileNavLinks.map((link, i) => (
+                <motion.a key={link.label} href={link.href}
+                  initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.06 }}
+                  onClick={(e) => { e.preventDefault(); handleNav(link.href) }}
+                  style={{ fontSize: '1.4rem', color: '#fff', fontWeight: 600, letterSpacing: 1 }}
+                  onMouseEnter={e => e.target.style.color = 'var(--gold)'}
+                  onMouseLeave={e => e.target.style.color = '#fff'}
+                >{link.label}</motion.a>
+              ))}
+              <motion.a href={`https://wa.me/${brand.whatsappNumber}`} target="_blank" rel="noopener"
+                initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
+                style={{ display: 'flex', alignItems: 'center', gap: 10, background: '#25D366', color: '#fff', padding: '12px 28px', borderRadius: 50, fontWeight: 700, marginTop: 8 }}>
+                <FaWhatsapp /> WhatsApp Us
+              </motion.a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

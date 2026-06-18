@@ -67,13 +67,39 @@ export default function Contact() {
               style={{ display: 'inline-flex', alignItems: 'center', gap: 12, background: '#25D366', color: '#fff', padding: '14px 28px', borderRadius: 50, fontWeight: 700, fontSize: '0.95rem', boxShadow: '0 8px 24px rgba(37,211,102,0.3)', marginBottom: 24 }}>
               <FaWhatsapp size={20} /> Chat on WhatsApp
             </motion.a>
-            <div style={{ borderRadius: 'var(--radius)', overflow: 'hidden', height: 200, background: 'linear-gradient(135deg, #E8EDF5, #D0DBEB)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.9rem', color: '#5A6478', fontWeight: 500 }}>
-              🗺️ Sharjah, United Arab Emirates
+            {/* Beautiful Map Card */}
+            <div style={{ borderRadius: 'var(--radius)', overflow: 'hidden', position: 'relative', height: 230, boxShadow: '0 8px 32px rgba(0,20,60,0.15)', border: '1.5px solid rgba(0,47,115,0.10)' }}>
+              <iframe
+                title="RAS Tourism Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.9!2d55.4085!3d25.3348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f594e4b0f1b4d%3A0x6f3ef4ffd6a1b8c2!2sSharjah%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2sae!4v1700000000000!5m2!1sen!2sae"
+                width="100%"
+                height="100%"
+                style={{ border: 0, display: 'block' }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+              {/* Live badge */}
+              <div style={{ position: 'absolute', bottom: 14, left: 14, background: 'rgba(0,18,51,0.88)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', borderRadius: 50, padding: '8px 16px', display: 'flex', alignItems: 'center', gap: 8, border: '1px solid rgba(216,178,106,0.35)', boxShadow: '0 4px 16px rgba(0,0,0,0.25)' }}>
+                <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#25D366', boxShadow: '0 0 8px #25D366', flexShrink: 0, animation: 'mapPulse 2s infinite' }} />
+                <span style={{ fontSize: '0.75rem', color: '#fff', fontWeight: 600, letterSpacing: 0.3 }}>Sharjah, United Arab Emirates</span>
+              </div>
+              {/* Brand pin */}
+              <div style={{ position: 'absolute', top: 14, right: 14, background: 'linear-gradient(135deg, #001233, #002F73)', borderRadius: 10, padding: '7px 14px', border: '1px solid rgba(216,178,106,0.45)', boxShadow: '0 4px 16px rgba(0,0,0,0.3)' }}>
+                <span style={{ fontSize: '0.68rem', color: '#D8B26A', fontWeight: 700, letterSpacing: 1.2, textTransform: 'uppercase' }}>RAS Tourism</span>
+              </div>
             </div>
+            <style>{`
+              @keyframes mapPulse {
+                0%, 100% { opacity: 1; transform: scale(1); }
+                50% { opacity: 0.5; transform: scale(1.4); }
+              }
+            `}</style>
           </motion.div>
 
           {/* Form */}
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2 }}
+            className="contact-form-card"
             style={{ background: 'var(--white)', borderRadius: 'var(--radius-lg)', padding: 40, boxShadow: 'var(--shadow-md)' }}>
             <div style={{ color: 'var(--gold)', fontSize: '0.78rem', fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', marginBottom: 8 }}>Quick Enquiry</div>
             <h3 style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 800, color: 'var(--blue-dark)', marginBottom: 24, fontSize: '1.2rem' }}>Send Us a Message</h3>
@@ -123,6 +149,9 @@ export default function Contact() {
         @media (max-width: 880px) {
           .contact-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .form-row { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 480px) {
+          .contact-form-card { padding: 26px 20px !important; }
         }
       `}</style>
     </section>

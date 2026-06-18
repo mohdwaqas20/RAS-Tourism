@@ -41,22 +41,33 @@ export default function Services() {
               <motion.div key={i}
                 variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.5, delay: (i % 4) * 0.1 }}
                 whileHover={{ y: -8 }}
-                style={{ background: 'var(--white)', borderRadius: 'var(--radius-lg)', padding: '36px 28px', position: 'relative', overflow: 'hidden', border: '1.5px solid rgba(0,47,115,0.06)', cursor: 'default', transition: 'all 0.35s', display: 'flex', flexDirection: 'column' }}
+                style={{ background: 'var(--white)', borderRadius: 'var(--radius-lg)', position: 'relative', overflow: 'hidden', border: '1.5px solid rgba(0,47,115,0.06)', cursor: 'default', transition: 'all 0.35s', display: 'flex', flexDirection: 'column' }}
                 className="service-card">
-                <div style={{ width: 60, height: 60, borderRadius: 14, background: 'linear-gradient(135deg, rgba(0,47,115,0.08), rgba(0,95,184,0.12))', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.6rem', marginBottom: 20 }} className="svc-icon">
-                  <Icon style={{ color: 'var(--svc-icon-color, var(--blue-dark))', fontSize: '1.5rem' }} />
+
+                {/* Photo */}
+                <div style={{ position: 'relative', height: 188, flexShrink: 0 }}>
+                  <img src={svc.image} alt={svc.title} loading="lazy"
+                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease' }}
+                    className="svc-photo" />
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,18,51,0) 45%, rgba(0,18,51,0.5) 100%)' }} />
+                  <div style={{ position: 'absolute', left: 28, bottom: -26, width: 60, height: 60, borderRadius: 14, background: 'var(--white)', boxShadow: '0 10px 26px rgba(0,30,80,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }} className="svc-icon">
+                    <Icon style={{ color: 'var(--svc-icon-color, var(--blue-dark))', fontSize: '1.5rem' }} />
+                  </div>
                 </div>
-                <h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '1.05rem', fontWeight: 700, color: 'var(--svc-title-color, var(--blue-dark))', marginBottom: 10 }} className="svc-title">{svc.title}</h3>
-                <p style={{ fontSize: '0.85rem', color: 'var(--svc-desc-color, #5A6478)', lineHeight: 1.65, flexGrow: 1 }} className="svc-desc">{svc.description}</p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7, marginTop: 18 }}>
-                  {svc.tags.map((tag, j) => (
-                    <span key={j} style={{ fontSize: '0.72rem', padding: '4px 12px', borderRadius: 50, background: 'var(--svc-tag-bg, var(--gray-light))', color: 'var(--svc-tag-color, var(--blue-mid))', fontWeight: 600 }} className="svc-tag">{tag}</span>
-                  ))}
+
+                <div style={{ padding: '44px 28px 32px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                  <h3 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '1.05rem', fontWeight: 700, color: 'var(--svc-title-color, var(--blue-dark))', marginBottom: 10 }} className="svc-title">{svc.title}</h3>
+                  <p style={{ fontSize: '0.85rem', color: 'var(--svc-desc-color, #5A6478)', lineHeight: 1.65, flexGrow: 1 }} className="svc-desc">{svc.description}</p>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7, marginTop: 18 }}>
+                    {svc.tags.map((tag, j) => (
+                      <span key={j} style={{ fontSize: '0.72rem', padding: '4px 12px', borderRadius: 50, background: 'var(--svc-tag-bg, var(--gray-light))', color: 'var(--svc-tag-color, var(--blue-mid))', fontWeight: 600 }} className="svc-tag">{tag}</span>
+                    ))}
+                  </div>
+                  <button onClick={() => setActiveIndex(i)} className="svc-learn-more"
+                    style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 22, paddingTop: 18, borderTop: '1px solid var(--svc-divider, rgba(0,47,115,0.08))', background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', fontSize: '0.85rem', fontWeight: 700, color: 'var(--svc-learnmore-color, var(--blue-dark))', width: '100%', textAlign: 'left' }}>
+                    Learn More <FaArrowRight size={12} style={{ transition: 'transform 0.25s' }} className="svc-arrow" />
+                  </button>
                 </div>
-                <button onClick={() => setActiveIndex(i)} className="svc-learn-more"
-                  style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 22, paddingTop: 18, borderTop: '1px solid var(--svc-divider, rgba(0,47,115,0.08))', background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', fontSize: '0.85rem', fontWeight: 700, color: 'var(--svc-learnmore-color, var(--blue-dark))', width: '100%', textAlign: 'left' }}>
-                  Learn More <FaArrowRight size={12} style={{ transition: 'transform 0.25s' }} className="svc-arrow" />
-                </button>
               </motion.div>
             )
           })}
@@ -93,7 +104,7 @@ export default function Services() {
               </p>
 
               {/* bullet hints */}
-              {['Group & Corporate Travel', 'Umrah & Pilgrimage Tours', 'Travel Insurance Assistance', 'And For more Contact Us ->'].map((item, k) => (
+              {['Group & Corporate Travel', 'Umrah & Pilgrimage Tours', 'Travel Insurance Assistance', 'To Know More Contact Us'].map((item, k) => (
                 <div key={k} style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
                   <FaAngleRight style={{ color: 'var(--gold)', fontSize: '0.75rem', flexShrink: 0 }} />
                   <span style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>{item}</span>
@@ -145,8 +156,12 @@ export default function Services() {
               role="dialog" aria-modal="true" aria-label={active.title}
             >
               {/* Image header */}
-              <div style={{ position: 'relative', height: 220, flexShrink: 0, background: 'linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 55%, var(--gold) 130%)', overflow: 'hidden' }}>
-                <div style={{ position: 'absolute', inset: 0, opacity: 0.12, backgroundImage: 'linear-gradient(rgba(255,255,255,.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.6) 1px, transparent 1px)', backgroundSize: '36px 36px' }} />
+              <div style={{
+                position: 'relative', height: 220, flexShrink: 0, overflow: 'hidden',
+                backgroundImage: `linear-gradient(180deg, rgba(0,18,51,0.25) 0%, rgba(0,18,51,0.88) 100%), url(${active.image})`,
+                backgroundSize: 'cover', backgroundPosition: 'center',
+              }}>
+                <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: 'linear-gradient(rgba(255,255,255,.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.6) 1px, transparent 1px)', backgroundSize: '36px 36px' }} />
                 {[120, 70, 44].map((s, idx) => (
                   <div key={idx} style={{ position: 'absolute', width: s, height: s, borderRadius: '50%', border: '1.5px solid rgba(255,255,255,0.25)', top: `${10 + idx * 18}%`, right: `${-6 + idx * 14}%` }} />
                 ))}
@@ -218,6 +233,7 @@ export default function Services() {
           --svc-divider: rgba(255,255,255,0.2);
           --svc-learnmore-color: #fff;
         }
+        .service-card:hover .svc-photo { transform: scale(1.08); }
         .service-card:hover .svc-icon { background: rgba(200,155,75,0.2) !important; }
         .svc-learn-more:hover .svc-arrow { transform: translateX(4px); }
         @media (max-width: 560px) {

@@ -81,11 +81,11 @@ export default function About() {
               {aboutStats.map((s, i) => (
                 <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
                   whileHover={{ y: -4, boxShadow: 'var(--shadow-md)' }}
-                  style={{ background: 'var(--gray-light)', borderRadius: 'var(--radius)', padding: 24, cursor: 'default', transition: 'all 0.3s' }}>
+                  style={{ background: 'var(--gray-light)', borderRadius: 'var(--radius)', padding: 24, cursor: 'default', transition: 'all 0.3s', textAlign: 'center' }}>
                   <div style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '2rem', fontWeight: 800, color: 'var(--blue-dark)' }}>
                     <Counter target={s.value} raw={s.label === 'License No.'} /><span style={{ fontSize: '1rem', color: 'var(--gold)' }}>{s.suffix}</span>
                   </div>
-                  <div style={{ fontSize: '0.82rem', color: '#5A6478', marginTop: 4, fontWeight: 500 }}>{s.label}</div>
+                  <div style={{ fontSize: '0.82rem', color: '#5A6478', marginTop: 4, fontWeight: 500, textAlign: 'center' }}>{s.label}</div>
                 </motion.div>
               ))}
             </div>

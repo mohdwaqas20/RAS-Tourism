@@ -41,9 +41,8 @@ export const brand = {
 
 export const socials = [
   { label: 'WhatsApp', icon: FaWhatsapp, href: `https://wa.me/${brand.whatsappNumber}` },
-  { label: 'Instagram', icon: FaInstagram, href: '#' },
-  { label: 'Facebook', icon: FaFacebookF, href: '#' },
-  { label: 'LinkedIn', icon: FaLinkedinIn, href: '#' },
+  { label: 'Instagram', icon: FaInstagram, href: 'https://www.instagram.com/ruknalsurajtourism?igsh=ZmcweTZxMWNsdzN1' },
+  { label: 'Facebook', icon: FaFacebookF, href: 'https://www.facebook.com/share/1BUUrLwBFh/' },,
 ]
 
 /* ── Primary navigation (in-page anchors on the Home route) ──────── */
@@ -68,14 +67,14 @@ export const mobileNavLinks = [
 
 /* ── Hero + About statistics ──────────────────────────────────── */
 export const heroStats = [
-  { value: 941218, suffix: '', label: 'License No.' },
+  { value: 941218, suffix: '', label: 'License No.', noFormat: true },
   { value: 5000, suffix: '+', label: 'Happy Clients' },
   { value: 99, suffix: '%', label: 'Visa Success Rate' },
   { value: 24, suffix: '/7', label: 'Support' },
 ]
 
 export const aboutStats = [
-  { value: 941218, suffix: '', label: 'License No.' },
+  { value: 941218, suffix: '', label: 'License No.', noFormat: true },
   { value: 5000, suffix: '+', label: 'Happy Clients' },
   { value: 99, suffix: '%', label: 'Visa Success Rate' },
   { value: 24, suffix: '/7', label: 'Support' },
@@ -89,7 +88,7 @@ export const services = [
     description:
       'Curated city tours, desert safaris and luxury experiences across Dubai, Abu Dhabi and the wider Emirates.',
     tags: ['Dubai City Tours', 'Desert Safari', 'Abu Dhabi Tours', 'Luxury Experiences'],
-    image: '/services/uae-tourism.jpg',
+    image: './Services_1.jpg',
     detail:
       'From iconic skylines to golden dunes, we design itineraries that show off the best of the Emirates. Every package is built around your pace, your budget and the experiences you actually want — not a one-size-fits-all bus tour.',
     included: [
@@ -106,7 +105,7 @@ export const services = [
     description:
       'Best-fare international and domestic flights, sourced across airlines to fit your schedule and budget.',
     tags: ['International Flights', 'Domestic Flights', 'Best Fare Deals'],
-    image: '/services/flight-tickets.jpg',
+    image: './Services_2.jpg',
     detail:
       'We compare fares across major and budget airlines so you don\u2019t have to. Whether it\u2019s a same-day domestic hop or a multi-stop international itinerary, our team finds the route that fits your schedule and your wallet.',
     included: [
@@ -123,7 +122,7 @@ export const services = [
     description:
       'UAE tourist and visit visa assistance, handled end to end with fast processing and high approval rates.',
     tags: ['UAE Tourist Visa', 'Visit Visa Assistance', 'Fast Processing'],
-    image: '/services/tourist-visas.jpg',
+    image: './Services_3.jpg',
     detail:
       'Visa paperwork is the part nobody enjoys — so we handle it for you. From document checks to submission and status tracking, our team keeps your application moving and answers every question along the way.',
     included: [
@@ -140,7 +139,7 @@ export const services = [
     description:
       'Hand-picked stays from budget-friendly hotels to five-star resorts, matched to your taste and itinerary.',
     tags: ['Luxury Hotels', 'Budget Hotels', 'Resort Packages'],
-    image: '/services/hotel-bookings.jpg',
+    image: './Services_4.jpg',
     detail:
       'We book hotels in Dubai, Abu Dhabi, Sharjah, Ras Al Khaimah, Fujairah and Ajman, ranging from budget-friendly stays to five-star resorts and serviced apartments — matched to your itinerary, group size and budget.',
     included: [
@@ -157,7 +156,7 @@ export const services = [
     description:
       'Reliable, comfortable transfers — including VIP and private transportation — to and from every UAE airport.',
     tags: ['Airport Transfers', 'VIP Transfers', 'Private Transportation'],
-    image: '/services/airport-transfer.jpg',
+    image: './Services_5.jpg',
     detail:
       'Flight delayed? Landing at midnight? Our drivers track your flight and wait for you — no extra charge, no stress. Available at every airport across the Emirates, from economy sedans to VIP fleets.',
     included: [
@@ -174,7 +173,7 @@ export const services = [
     description:
       'Complete documentation, expert guidance and submission support for Schengen-zone visa applications.',
     tags: ['Complete Documentation', 'Visa Guidance', 'Application Submission'],
-    image: '/services/schengen-application.jpg',
+    image: './Services_6.jpg',
     detail:
       'Schengen applications are detail-heavy and unforgiving of small mistakes. We walk you through every required document, review your file before submission, and help you avoid the errors that cause delays or rejections.',
     included: [
@@ -191,7 +190,7 @@ export const services = [
     description:
       'Appointment booking, pre-submission consultation and tracking assistance for your Schengen application.',
     tags: ['Appointment Booking', 'Consultation', 'Tracking Assistance'],
-    image: '/services/schengen-appointment.jpg',
+    image: './Services_7.jpg',
     detail:
       'Getting a visa centre slot can take weeks if you\u2019re booking alone. We secure your appointment, prep you for what to expect on the day, and keep tracking your application after it\u2019s submitted.',
     included: [
@@ -226,6 +225,8 @@ export const destinations = [
   { id: 'dubai', name: 'Dubai', region: 'United Arab Emirates', tag: 'Most Popular', glyph: 'dubai' },
   { id: 'abudhabi', name: 'Abu Dhabi', region: 'UAE Capital', tag: null, glyph: 'abudhabi' },
   { id: 'sharjah', name: 'Sharjah', region: 'Cultural Capital', tag: null, glyph: 'sharjah' },
+  { id: 'rak', name: 'Ras Al Khaimah', region: 'Adventure Capital', tag: null, glyph: 'rak' },
+  { id: 'uaq', name: 'Umm Al Quwain', region: 'Hidden Gem of UAE', tag: null, glyph: 'uaq' },
   { id: 'europe', name: 'Europe', region: 'Schengen Zone', tag: 'Schengen Visa', glyph: 'europe' },
   { id: 'france', name: 'France', region: 'Paris & Beyond', tag: null, glyph: 'france' },
   { id: 'germany', name: 'Germany', region: 'Central Europe', tag: null, glyph: 'germany' },

@@ -27,3 +27,36 @@ ul { list-style: none; }
 /* Swiper custom */
 .swiper-pagination-bullet { background: var(--blue-dark) !important; }
 .swiper-pagination-bullet-active { background: var(--gold) !important; }
+
+/* ── Global responsive baseline ──────────────────────────────────
+   Individual sections use inline padding of "100px 5%". On smaller
+   screens that vertical padding is excessive, so we scale it down
+   with simple breakpoints that apply everywhere via the section tag. */
+section, footer {
+  padding-left: 5% !important;
+  padding-right: 5% !important;
+}
+
+@media (max-width: 880px) {
+  html { font-size: 15px; }
+  section, footer > div:first-child { padding-top: 72px !important; padding-bottom: 72px !important; }
+}
+
+@media (max-width: 560px) {
+  html { font-size: 14.5px; }
+  section, footer > div:first-child { padding-top: 56px !important; padding-bottom: 56px !important; }
+}
+
+@media (max-width: 380px) {
+  section, footer > div:first-child { padding-top: 48px !important; padding-bottom: 48px !important; }
+}
+
+/* Prevent horizontal scroll/overflow on small viewports from any
+   slightly-oversized fixed-width element */
+#root, body { overflow-x: hidden; width: 100%; }
+
+/* Buttons and tappable elements should never shrink below a
+   comfortable touch target on mobile */
+@media (max-width: 560px) {
+  button, a { -webkit-tap-highlight-color: transparent; }
+}

@@ -61,8 +61,9 @@ export default function Hero() {
       </motion.div>
 
       {/* Content */}
-      <div style={{ position: 'relative', zIndex: 3, maxWidth: 1280, margin: '0 auto', padding: '100px 5% 60px', width: '100%' }}>
+      <div className="hero-content" style={{ position: 'relative', zIndex: 3, maxWidth: 1280, margin: '0 auto', padding: '100px 5% 60px', width: '100%' }}>
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}
+          className="hero-badge"
           style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(200,155,75,0.15)', border: '1px solid rgba(200,155,75,0.35)', color: 'var(--gold-light)', padding: '7px 18px', borderRadius: 50, fontSize: '0.8rem', fontWeight: 600, letterSpacing: 1, textTransform: 'uppercase', marginBottom: 28 }}>
           <motion.span animate={{ scale: [1, 1.4, 1], opacity: [1, 0.5, 1] }} transition={{ duration: 2, repeat: Infinity }}
             style={{ width: 7, height: 7, background: 'var(--gold)', borderRadius: '50%', display: 'inline-block' }} />
@@ -81,6 +82,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
+          className="hero-cta-group"
           style={{ display: 'flex', flexWrap: 'wrap', gap: 16, marginBottom: 60 }}>
           <motion.a href="#contact" onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }) }}
             whileHover={{ y: -3, boxShadow: '0 16px 40px rgba(200,155,75,0.5)' }} whileTap={{ scale: 0.97 }}
@@ -96,14 +98,18 @@ export default function Hero() {
 
         {/* Stats */}
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }}
-          style={{ display: 'flex', flexWrap: 'wrap', gap: 32 }}>
+          className="hero-stats"
+          style={{ display: 'flex', flexWrap: 'wrap', gap: 32, alignItems: 'center' }}>
           {heroStats.map((stat, i) => (
             <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
-              <div>
+              <div style={{ textAlign: 'center' }}>
                 <div style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '2rem', fontWeight: 800, color: 'var(--gold)', lineHeight: 1 }}>
-                  <AnimatedCounter target={stat.value} suffix={stat.suffix} />
+                  {stat.noFormat
+                    ? <span>{stat.value}{stat.suffix}</span>
+                    : <AnimatedCounter target={stat.value} suffix={stat.suffix} />
+                  }
                 </div>
-                <div style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.65)', marginTop: 4, fontWeight: 500 }}>{stat.label}</div>
+                <div style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.65)', marginTop: 6, fontWeight: 500, textAlign: 'center' }}>{stat.label}</div>
               </div>
               {i < heroStats.length - 1 && <div style={{ width: 1, height: 40, background: 'rgba(255,255,255,0.15)' }} className="stat-div" />}
             </div>
@@ -114,6 +120,17 @@ export default function Hero() {
       <style>{`
         @media (max-width: 560px) {
           .stat-div { display: none; }
+        }
+        @media (max-width: 880px) {
+          .hero-content { padding: 90px 0 48px !important; }
+          .hero-stats { gap: 22px !important; }
+        }
+        @media (max-width: 480px) {
+          .hero-content { padding: 80px 0 40px !important; }
+          .hero-badge { font-size: 0.72rem !important; padding: 6px 14px !important; }
+          .hero-cta-group { gap: 12px !important; }
+          .hero-cta-group a { padding: 13px 24px !important; font-size: 0.88rem !important; width: 100%; justify-content: center; }
+          .hero-stats { gap: 18px !important; row-gap: 22px !important; }
         }
       `}</style>
     </section>
